@@ -13,17 +13,11 @@
         "fideloper/proxy": "^4.4",
         "laravel/framework": "^6.20",
         "laravel/tinker": "^2.5",
-<<<<<<< HEAD
-<<<<<<< HEAD
         "laravel/ui": "1.*",
         "league/flysystem-aws-s3-v3": "~1.0",
-        "league/flysystem-cached-adapter": "~1.0"
-=======
+        "league/flysystem-cached-adapter": "~1.0",
+        "laravel/ui": "1.*",
         "laravel/ui": "1.*"
->>>>>>> parent of f3374a3... fix detail
-=======
-        "laravel/ui": "1.*"
->>>>>>> parent of f3374a3... fix detail
     },
     "require-dev": {
         "facade/ignition": "^1.16.4",

@@ -1,0 +1,184 @@
+/* 以下追加したスタイル */
+
+body{
+    background-color: rgb(247, 255, 244) !important; 
+}
+
+.overwrap-link {
+    width: 100%;
+    height: 100%;
+}
+
+.twitter-share-button {
+    margin-top: 0.25rem;
+}
+
+.calendar-p {
+    padding: 1rem;
+}
+
+.table td{
+    padding: 0;
+    height: 5rem;
+}
+
+.justify-content-center {
+    display: flex;
+    justify-content: space-between;
+}
+.deleted {
+    text-decoration: line-through;
+}
+
+.label-w-1 {
+    width: 10%;
+    padding: 1%;
+}
+
+@media (max-width: 768px) {
+    .label-w-1 {
+        width: 30%;
+        padding: 1%;
+    }
+}
+
+.bg-secondary a{
+    color: #ada6a6 !important;
+}
+
+.day-link {
+    color: #696969;
+    display: block;
+    padding:0.2rem 0 0 0.2rem;
+    width: 100%;
+    height: 100%;
+}
+
+.day {
+    background-color: rgb(247, 255, 244);
+    cursor: pointer;
+    transition: all 300ms 0s ease;
+}
+
+.day:hover {
+    cursor: pointer;
+    background-color: rgb(185, 255, 214);
+}
+
+.today{
+    color: green;
+}
+  
+.saturday{
+    color: blue; 
+}
+  
+.sunday{
+    color: red;
+}
+
+.events-list {
+    color: #696969;
+}
+
+.btn-primary a{
+    color: #f6f6f6;
+}
+
+.btn-secondary a{
+    color: #f6f6f6;
+}
+
+.head-primary {
+    color: rgb(172, 73, 73);
+}
+
+.prev-next-wrapper{
+    margin : 0 2%;
+    display: flex;
+    justify-content: space-between;
+    color: #696969;
+}
+
+.prev{
+    font-size: 16px;
+    color: #696969;
+    transition: all 300ms 0s ease;
+}
+  
+.next{
+    font-size: 16px;
+    color: #696969;
+    transition: all 300ms 0s ease;
+}
+  
+.prev:hover{
+    color: red;
+}
+  
+.next:hover{
+    color: red;
+}
+.month-header{
+    color: #778899;
+}
+  
+.event-text {
+    width: 413px;
+    height: 236px;
+}
+  
+@media (max-width: 485px){
+    .event-text {
+      width: 288px;
+      height: 236px;
+    }
+}
+  
+  
+@media (max-width: 365px){
+    .event-text {
+        width: 250px;
+        height: 236px;
+    }
+}
+
+@media (max-width: 280px){
+    .event-text {
+        width: 220px;
+    }
+    .event-image {
+        width: 200px;
+    }
+}
+
+@media (min-width: 300px){
+    .prev:hover{
+        color: red;
+        font-size: 18px;
+    }
+      
+    .next:hover{
+        color: red;
+        font-size: 18px;
+    }
+}
+
+  
+.btn-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.search{
+    display: block;
+}
+
+.outside-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+[v-cloak] {
+    display: none;
+}

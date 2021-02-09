@@ -120,8 +120,6 @@ Route::post('/user/mypage/edit', 'UserEditController@register_profile')->name('r
 Route::get('/user/mypage/edit/preview', 'UserEditController@preview_profile')->name('preview_profile')->middleware('check.request');
 
 Route::post('/user/mypage/edit/preview', 'UserEditController@save_profile')->name('save_profile');
-<<<<<<< HEAD
-<<<<<<< HEAD
 
 /**
  *  画像投稿ルート
@@ -132,7 +130,3 @@ Route::get('/upload/image', 'ImageController@input');
 Route::post('/upload/image', 'ImageController@upload');
 //アップロードした画像ファイルを表示するページのルーティング
 Route::get('/output/image', 'ImageController@output');
-=======
->>>>>>> parent of f3374a3... fix detail
-=======
->>>>>>> parent of f3374a3... fix detail

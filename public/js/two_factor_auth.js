@@ -81,38 +81,82 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/assets/js/main.js":
-/*!*************************************!*\
-  !*** ./resources/assets/js/main.js ***!
-  \*************************************/
+/***/ "./resources/js/two_factor_auth.js":
+/*!*****************************************!*\
+  !*** ./resources/js/two_factor_auth.js ***!
+  \*****************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-var submit = document.getElementById('submit');
-var load_ani = document.getElementById('load-ani');
-var alert = document.getElementById('alert');
-console.log(alert);
-submit.addEventListener('click', function () {
-  load_ani.classList.add('loader'); // console.log(alert.textContent);
+new Vue({
+  el: '#app',
+  data: {
+    step: 1,
+    email: '',
+    password: '',
+    token: '',
+    userId: -1,
+    message: ''
+  },
+  methods: {
+    firstAuth: function firstAuth() {
+      var _this = this;
 
-  console.log(alert);
-}); // if()
+      this.message = '';
+      var url = '/ajax/two_factor_auth/first_auth';
+      var params = {
+        email: this.email,
+        password: this.password
+      };
+      axios.post(url, params).then(function (response) {
+        var result = response.data.result;
+
+        if (result) {
+          _this.userId = response.data.user_id;
+          _this.step = 2;
+        } else {
+          _this.message = 'ログイン情報が間違っています。';
+        }
+      });
+    },
+    secondAuth: function secondAuth() {
+      var _this2 = this;
+
+      var url = '/ajax/two_factor_auth/second_auth';
+      var params = {
+        user_id: this.userId,
+        tfa_token: this.token
+      };
+      axios.post(url, params).then(function (response) {
+        var result = response.data.result;
+
+        if (result) {
+          // ２段階認証成功
+          location.href = '/home';
+        } else {
+          _this2.message = '２段階パスワードが正しくありません。';
+          _this2.token = '';
+        }
+      });
+    }
+  }
+});
 
 /***/ }),
 
-/***/ 2:
-/*!*******************************************!*\
-  !*** multi ./resources/assets/js/main.js ***!
-  \*******************************************/
+/***/ 3:
+/*!***********************************************!*\
+  !*** multi ./resources/js/two_factor_auth.js ***!
+  \***********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/calendarForLiveshow/calendarForLive/resources/assets/js/main.js */"./resources/assets/js/main.js");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/calendarForLiveshow/calendarForLive/resources/js/two_factor_auth.js */"./resources/js/two_factor_auth.js");
 
 
 /***/ })

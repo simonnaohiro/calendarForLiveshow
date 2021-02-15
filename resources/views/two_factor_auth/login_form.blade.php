@@ -3,6 +3,7 @@
 <head>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <title>ログイン</title>
 </head>
 <body>
@@ -26,7 +27,7 @@
                     <!-- Authentication Links -->
                     @guest
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('ログイン') }}</a>
+                            <a class="nav-link" href="{{ route('login_form') }}">{{ __('ログイン') }}</a>
                         </li>
                         @if (Route::has('register'))
                             <li class="nav-item">
@@ -66,7 +67,7 @@
                         <div class="card-header">{{__('ログイン')}}</div>
                         <div class="card-body">
                             <div id="app" class="p-3">
-                                <div class="alert alert-info" v-if="message" v-text="message"></div>
+                                <div id="alert" class="alert alert-info" v-if="message" v-text="message"></div>
                         
                                 <!-- １段階目のログインフォーム -->
                                 <div v-if="step==1">
@@ -89,9 +90,8 @@
                                     </div>
                                     <div class="form-group row mb-0">
                                         <div class="col-md-8 offset-md-4">
-                                            <button type="button" class="btn btn-primary" @click="firstAuth">送信する</button>
+                                            <button type="button" id="submit" class="btn btn-primary" @click="firstAuth">送信する</button>
                                         </div>
-
                                         @if (Route::has('password.request'))
                                         <div class="col-md-8 offset-md-4">
                                             <a class="btn btn-link" href="{{ route('password.request') }}">
@@ -100,7 +100,7 @@
                                         </div>
                                         @endif
                                     </div>
-
+                                    <div id="load-ani" class=""></div>
                                 </div>
                         
                                 <!-- ２段階目・ログインフォーム -->
@@ -122,78 +122,7 @@
     </main>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
-    <script>
-
-        new Vue({
-            el: '#app',
-            data: {
-                step: 1,
-                email: '',
-                password: '',
-                token: '',
-                userId: -1,
-                message: ''
-            },
-            methods: {
-                firstAuth() {
-
-                    this.message = '';
-
-                    const url = '/ajax/two_factor_auth/first_auth';
-                    const params = {
-                        email: this.email,
-                        password: this.password
-                    };
-                    axios.post(url, params)
-                        .then(response => {
-
-                            const result = response.data.result;
-
-                            if(result) {
-
-                                this.userId = response.data.user_id;
-                                this.step = 2;
-
-                            } else {
-
-                                this.message = 'ログイン情報が間違っています。';
-
-                            }
-
-                        });
-
-                },
-                secondAuth() {
-
-                    const url = '/ajax/two_factor_auth/second_auth';
-                    const params = {
-                        user_id: this.userId,
-                        tfa_token: this.token
-                    };
-
-                    axios.post(url, params)
-                        .then(response => {
-
-                            const result = response.data.result;
-
-                            if(result) {
-
-                                // ２段階認証成功
-                                location.href = '/home';
-
-                            } else {
-
-                                this.message = '２段階パスワードが正しくありません。';
-                                this.token = '';
-
-                            }
-
-                        });
-
-                }
-            }
-        });
-
-    </script>
+    <script src="{{ mix('js/two_factor_auth.js') }}"></script>
+    <script src=" {{ mix('js/main.js') }} "></script>
 </body>
 </html>

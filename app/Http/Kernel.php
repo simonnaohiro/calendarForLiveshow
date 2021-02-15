@@ -63,8 +63,8 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'check.request' => \App\Http\Middleware\CheckRequest::class,
         'already.layaway' => \App\Http\Middleware\AlreadyLayaway::class,
+        'check.same.user' => \App\Http\Middleware\CheckSameUser::class,
         'check.user.logined' => \App\Http\Middleware\CheckUserLogined::class,
-        'layaway.confirm.mail' => \App\Http\Middleware\CheckUserLogined::class,
         // 未実装
         // 'check.old.profile' => \App\Http\Middleware\CheckOldProfile::class,
         'no.user.check' => \App\Http\Middleware\NoUserCheck::class,

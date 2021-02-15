@@ -84,17 +84,32 @@
 /******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
-/******/ ([
-/* 0 */,
-/* 1 */
-/*!*******************************************!*\
-  !*** multi ./resources/assets/js/test.js ***!
-  \*******************************************/
+/******/ ({
+
+/***/ "./resources/js/test.js":
+/*!******************************!*\
+  !*** ./resources/js/test.js ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$('#click').on('click', function () {
+  console.log('clicked!');
+});
+console.log('hello');
+
+/***/ }),
+
+/***/ 1:
+/*!************************************!*\
+  !*** multi ./resources/js/test.js ***!
+  \************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-!(function webpackMissingModule() { var e = new Error("Cannot find module '/Applications/MAMP/htdocs/calendarForLiveshow/calendarForLive/resources/assets/js/test.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/calendarForLiveshow/calendarForLive/resources/js/test.js */"./resources/js/test.js");
 
 
 /***/ })
-/******/ ]);
+
+/******/ });

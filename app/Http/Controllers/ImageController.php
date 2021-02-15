@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -31,7 +32,7 @@ class ImageController extends Controller
         if ($request->file('file')->isValid([])) {
             //バリデーションを正常に通過した時の処理
             //S3へのファイルアップロード処理の時の情報を変数$upload_infoに格納する
-            $upload_info = Storage::disk('s3')->putFile('/test', $request->file('file'), 'public');
+            $upload_info = Storage::disk('s3')->put('/test', $request->file('file'), 'public');
             //S3へのファイルアップロード処理の時の情報が格納された変数$upload_infoを用いてアップロードされた画像へのリンクURLを変数$pathに格納する
             $path = Storage::disk('s3')->url($upload_info);
             //現在ログイン中のユーザIDを変数$user_idに格納する

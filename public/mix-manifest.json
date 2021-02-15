@@ -3,5 +3,7 @@
     "/css/app.css": "/css/app.css",
     "/../resources/assets/build/css/_base.css": "/../resources/assets/build/css/_base.css",
     "/css/style.css": "/css/style.css",
-    "/js/main.js": "/js/main.js"
+    "/js/main.js": "/js/main.js",
+    "/js/test.js": "/js/test.js",
+    "/js/two_factor_auth.js": "/js/two_factor_auth.js"
 }

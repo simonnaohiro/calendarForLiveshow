@@ -15,4 +15,6 @@ mix.sass('resources/sass/app.scss', 'public/css')
    .sass('resources/assets/sass/_base.scss', '../resources/assets/build/css')
    .sass('resources/assets/sass/style.scss', 'public/css/style.css')
    .js('resources/js/app.js', 'public/js')
-   .js('resources/assets/js/main.js', 'public/js');
+   .js('resources/js/test.js', 'public/js')
+   .js('resources/assets/js/main.js', 'public/js')
+   .js('resources/js/two_factor_auth.js', 'public/js');

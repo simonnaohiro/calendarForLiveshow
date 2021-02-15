@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class CheckUserLogined
+class CheckSameUser
 {
     /**
      * Handle an incoming request.
@@ -16,13 +16,17 @@ class CheckUserLogined
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::check()){
+        $poster_id = $request->route()->parameter('poster_id');
+
+        if($poster_id != Auth::user()->id){
             return redirect(route('result'))->withInput([
                 'result' => '不正な操作です。',
                 'last_insert_id' => null,
                 'button' => 'トップページへ戻る'
             ]);
         }
+
+        return $next($request);
         return $next($request);
     }
 }

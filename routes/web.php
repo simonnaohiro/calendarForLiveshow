@@ -44,7 +44,7 @@ Auth::routes(['verify' => true]);
 // ワンタイムパスワードを送る
 
 // 二段階認証ログイン
-Route::get('two_factor_auth/login_form', 'TwoFactorAuthController@login_form')->name('login_form');
+Route::get('two_factor_auth/login_form', 'TwoFactorAuthController@login_form')->name('login_form')->middleware('check.user.logined');
 
 Route::post('ajax/two_factor_auth/first_auth', 'TwoFactorAuthController@first_auth');
 // 入力したワンタイムパスワードを検証してログイン
@@ -80,10 +80,10 @@ Route::get('/event/event_information/{event_id?}', 'EventController@show_event')
 Route::get('/events/list/{year}/{month}/{day}', 'EventController@day_event_list')->name('events_list');
 
 // イベント終了
-Route::get('/event/finish/{event_id}/{poster_id}', 'EventController@finish_event')->name('finish_event')->middleware('check.user.logined');
+Route::get('/event/finish/{event_id}/{poster_id}', 'EventController@finish_event')->name('finish_event')->middleware('check.same.user');
 
 // 論理削除
-Route::get('/soft_delete/{event_id}/{poster_id}', 'EventController@soft_delete')->name('soft_delete')->middleware('check.user.logined');
+Route::get('/soft_delete/{event_id}/{poster_id}', 'EventController@soft_delete')->name('soft_delete')->middleware('check.same.user');
 
 /**
  * イベントユーザーのチケット取り置き（予約）
@@ -105,7 +105,7 @@ Route::post('/event/layaway_confirmation', 'EventController@save_layaway')->midd
 // 出演者リスト
 Route::get('/event/performers/{event_id}', 'EventController@performer_list')->name('performers_list');
 // 予約（取り置き）リストへ
-Route::get('/event/perfomer/layaway_list/{event_id}/{performer}', "EventController@layaway_list")->name('layaway_list');
+Route::get('/event/perfomer/layaway_list/{event_id}/{performer}', "EventController@layaway_list")->name('layaway_list')->middleware('auth');
 
 /**
  * ユーザーページ系
@@ -125,8 +125,14 @@ Route::post('/user/mypage/edit/preview', 'UserEditController@save_profile')->nam
  *  画像投稿ルート
  */
 //画像ファイルをアップロードするボタンを設置するページへのルーティング
-Route::get('/upload/image', 'ImageController@input');
-//画像ファイルをアップロードする処理のルーティング
-Route::post('/upload/image', 'ImageController@upload');
-//アップロードした画像ファイルを表示するページのルーティング
-Route::get('/output/image', 'ImageController@output');
+// Route::get('/upload/image', 'ImageController@input');
+// //画像ファイルをアップロードする処理のルーティング
+// Route::post('/upload/image', 'ImageController@upload');
+// //アップロードした画像ファイルを表示するページのルーティング
+// Route::get('/output/image', 'ImageController@output');
+
+/**
+ * テストJS
+ */
+
+Route::get('/test/js', 'TestController@index')->name('index');

@@ -67,7 +67,7 @@
                         <div class="card-header">{{__('ログイン')}}</div>
                         <div class="card-body">
                             <div id="app" class="p-3">
-                                <div id="alert" class="alert alert-info" v-if="message" v-text="message"></div>
+                                <div class="alert alert-info" v-if="message" v-text="message"></div>
                         
                                 <!-- １段階目のログインフォーム -->
                                 <div v-if="step==1">
@@ -100,7 +100,9 @@
                                         </div>
                                         @endif
                                     </div>
-                                    <div id="load-ani" class=""></div>
+                                    <div class="load-area">
+                                        <div id="load-ani" class="float_r"></div>
+                                    </div>
                                 </div>
                         
                                 <!-- ２段階目・ログインフォーム -->
@@ -114,6 +116,9 @@
                                     <button type="button" class="btn btn-primary" @click="secondAuth">ログイン</button>
                                 </div>
                             </div>
+                        </div>
+                        <div class="load-area">
+                            <div id="load-ani" class="float_r"></div>
                         </div>
                     </div>
                 </div>

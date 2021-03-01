@@ -16,12 +16,14 @@ body {
 }
 
 .calendar-p {
+  width: 80%;
+  margin: 0 auto;
   padding: 1rem;
 }
 
 .table td {
   padding: 0;
-  height: 5rem;
+  height: 8rem;
 }
 
 .justify-content-center {
@@ -36,13 +38,6 @@ body {
 .label-w-1 {
   width: 10%;
   padding: 1%;
-}
-
-@media (max-width: 768px) {
-  .label-w-1 {
-    width: 30%;
-    padding: 1%;
-  }
 }
 
 .bg-secondary a {
@@ -132,20 +127,6 @@ body {
   height: 236px;
 }
 
-@media (max-width: 485px) {
-  .event-text {
-    width: 288px;
-    height: 236px;
-  }
-}
-
-@media (max-width: 365px) {
-  .event-text {
-    width: 250px;
-    height: 236px;
-  }
-}
-
 @media (max-width: 280px) {
   .event-text {
     width: 220px;
@@ -162,9 +143,41 @@ body {
     font-size: 18px;
   }
 
+  .calendar-p {
+    width: 100%;
+  }
+
   .next:hover {
     color: red;
     font-size: 18px;
+  }
+}
+
+@media (max-width: 300px) {
+  .calendar-p {
+    width: 100%;
+    padding: 0;
+  }
+}
+
+@media (max-width: 365px) {
+  .event-text {
+    width: 250px;
+    height: 236px;
+  }
+}
+
+@media (max-width: 485px) {
+  .event-text {
+    width: 288px;
+    height: 236px;
+  }
+}
+
+@media (max-width: 768px) {
+  .label-w-1 {
+    width: 30%;
+    padding: 1%;
   }
 }
 

@@ -19,4 +19,9 @@ class Event extends Model
     ];
 
     protected $table = 'events';
+
+    public function scopePoster($query, $event_id)
+    {
+        $query->find($event_id)->get(['post_user_id']);
+    }
 }

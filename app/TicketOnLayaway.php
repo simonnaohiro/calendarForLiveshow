@@ -22,4 +22,8 @@ class TicketOnLayaway extends Model
         $query->where('performer_name',  $performer);
     }
 
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }

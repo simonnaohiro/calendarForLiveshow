@@ -189,6 +189,8 @@ class EventController extends Controller
     public function layaway_list($event_id, $performer)
     {
         $layaways = TicketOnLayaway::event($event_id)->performer($performer)->get();
+        $poster = Event::poster($event_id)->first();
+        $poster_id = $poster->post_user_id;
 
         $user_id_list = [];
         foreach($layaways as $layaway) {
@@ -196,6 +198,6 @@ class EventController extends Controller
         }
         $layaway_users = User::name($user_id_list)->get();
 
-        return view('events.layaway_list', compact('layaway_users'));
+        return view('events.layaway_list', compact('layaway_users', 'event_id', 'performer', 'poster_id'));
     }
 }

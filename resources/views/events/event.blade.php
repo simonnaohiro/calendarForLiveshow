@@ -61,7 +61,7 @@
                         </div>
                         @endforeach
                         @if (!blank($same_user))
-                        <button class="btb btn-primary m-3"><a href="{{route('performers_list', ['event_id' => $event->id])}}">出演者リスト</a></button>
+                        <button class="btb btn-primary"><a href="{{route('performers_list', ['event_id' => $event->id])}}">出演者リスト</a></button>
                         @endif
                     </div>
                 </div>

@@ -105,7 +105,9 @@ Route::post('/event/layaway_confirmation', 'EventController@save_layaway')->midd
 // 出演者リスト
 Route::get('/event/performers/{event_id}', 'EventController@performer_list')->name('performers_list');
 // 予約（取り置き）リストへ
-Route::get('/event/perfomer/layaway_list/{event_id}/{performer}', "EventController@layaway_list")->name('layaway_list')->middleware('auth');
+Route::get('/event/performer/layaway_list/{event_id}/{performer}', "EventController@layaway_list")->name('layaway_list')->middleware('auth');
+//PDF出力
+Route::get('/pdf/{event_id}/{performer}/{poster_id}', 'PDFController@index')->name('pdf')->middleware('check.same.user');
 
 /**
  * ユーザーページ系

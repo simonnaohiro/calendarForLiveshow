@@ -15,94 +15,9 @@ class TicketOnLayawayTableSeeder extends Seeder
     public function run()
     {
         DB::table('ticket_on_layaways')->insert([
-            'event_id' => '22',
-            'user_id' => rand(0, 50),
-            'performer_name' => 'どうもテスト',
+            'event_id' => '28',
+            'user_id' => 277,
+            'performer_name' => 'bandE',
         ]);
-
-        DB::table('ticket_on_layaways')->insert([
-            'event_id' => '22',
-            'user_id' => rand(0, 50),
-            'performer_name' => 'どうもテスト',
-        ]);
-
-        DB::table('ticket_on_layaways')->insert([
-            'event_id' => '22',
-            'user_id' => rand(0, 50),
-            'performer_name' => 'どうもテスト',
-        ]);
-
-        DB::table('ticket_on_layaways')->insert([
-            'event_id' => '22',
-            'user_id' => rand(0, 50),
-            'performer_name' => 'どうもテスト',
-        ]);
-
-        DB::table('ticket_on_layaways')->insert([
-            'event_id' => '22',
-            'user_id' => rand(0, 50),
-            'performer_name' => 'どうもテスト',
-        ]);
-
-        DB::table('ticket_on_layaways')->insert([
-            'event_id' => '22',
-            'user_id' => rand(0, 50),
-            'performer_name' => 'どうもテスト',
-        ]);
-
-        DB::table('ticket_on_layaways')->insert([
-            'event_id' => '22',
-            'user_id' => rand(0, 50),
-            'performer_name' => 'どうもテスト',
-        ]);
-
-        DB::table('ticket_on_layaways')->insert([
-            'event_id' => '22',
-            'user_id' => rand(0, 50),
-            'performer_name' => 'どうもテスト',
-        ]);
-
-        DB::table('ticket_on_layaways')->insert([
-            'event_id' => '22',
-            'user_id' => rand(0, 50),
-            'performer_name' => 'どうもテスト',
-        ]);
-
-        DB::table('ticket_on_layaways')->insert([
-            'event_id' => '22',
-            'user_id' => rand(0, 50),
-            'performer_name' => 'どうもテスト',
-        ]);
-
-        DB::table('ticket_on_layaways')->insert([
-            'event_id' => '22',
-            'user_id' => rand(0, 50),
-            'performer_name' => 'どうもテスト',
-        ]);
-
-        DB::table('ticket_on_layaways')->insert([
-            'event_id' => '22',
-            'user_id' => rand(0, 50),
-            'performer_name' => 'どうもテスト',
-        ]);
-
-        DB::table('ticket_on_layaways')->insert([
-            'event_id' => '22',
-            'user_id' => rand(0, 50),
-            'performer_name' => 'どうもテスト',
-        ]);
-
-        DB::table('ticket_on_layaways')->insert([
-            'event_id' => '22',
-            'user_id' => rand(0, 50),
-            'performer_name' => 'どうもテスト',
-        ]);
-
-        DB::table('ticket_on_layaways')->insert([
-            'event_id' => '22',
-            'user_id' => rand(0, 50),
-            'performer_name' => 'どうもテスト',
-        ]);
-
     }
 }

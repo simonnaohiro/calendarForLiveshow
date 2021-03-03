@@ -28,7 +28,7 @@ class EventController extends Controller
         // パラメータの値から登録したイベントを取得
         $event = Event::find($event_id);
         // イベントに保存された投稿者idからユーザー情報を取得
-        $poster = User::find($event->post_user_id, ['id' , 'name']);
+        $poster = User::find($event->post_user_id, ['id', 'name']);
         // 処理しやすいように、ハイフンごとに日付をスライス
         $ymdt = BaseClass::extractKeywords($event->event_date);
 
@@ -49,15 +49,10 @@ class EventController extends Controller
             $ended_at = true;
         }
 
-        return view('events.event', [
-            'event_id' => $event_id,
-            'event' => $event,
-            'poster' => $poster,
-            'ymdt' => $ymdt,
-            'performers' => $performers,
-            'same_user' => $same_user,
-            'ended' => $ended_at,
-        ]);
+        return view('events.event', compact(
+            'event_id', 'event', 'poster', 'ymdt',
+            'performers', 'same_user', 'ended_at',
+        ));
     }
 
     public function redirect_ticket_on_layaway($event_id, $performer)

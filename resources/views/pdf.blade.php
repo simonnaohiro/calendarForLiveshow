@@ -69,7 +69,7 @@ td {
                 @foreach ($layaways as $item)
                 <tr>
                     <td>{{$item->user->name}}</td>
-                    <td></td>
+                    <td>¥{{$item->event->price}}</td>
                     <td></td>
                     <td></td>
                 </tr>

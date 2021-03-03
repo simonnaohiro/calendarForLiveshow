@@ -40,6 +40,7 @@ class EventRegisterController extends Controller
         $validator = Validator::make($request->all(), [
             'event_date' => 'required',
             'event_title' => 'required|string|max:255',
+            'price' => 'nullable|integer',
             'contents' => 'required|string|max:10000',
             'performers' => 'required|string|max:300',
             'event_image' => 'nullable|image',
@@ -58,6 +59,7 @@ class EventRegisterController extends Controller
             'event_date' => $request->event_date,
             'event_title' => $request->event_title,
             'contents' => $request->contents,
+            'price' => (int)$request->price,
             'event_image' => $request->event_image,
             'performers' => $request->performers,
         ];
@@ -67,6 +69,7 @@ class EventRegisterController extends Controller
 
     public function preview(Request $request)
     {   
+
         $event = $request->old();
         $poster = User::find($event['post_user_id']);
 
@@ -75,10 +78,20 @@ class EventRegisterController extends Controller
 
     public function post_event(Request $request)
     {
-        
+
         $event = new Event();
 
-        $event->fill($request->all())->save();
+        $event_info = [
+            'post_user_id' => $request->post_user_id,
+            'event_date' => $request->event_date,
+            'event_title' => $request->event_title,
+            'price' => (int)$request->price,
+            'contents' => $request->contents,
+            'event_image' => $request->event_image,
+            'performers' => $request->performers,
+        ];
+        
+        $event->fill($event_info)->save();
 
         $last_insert_id = $event->id;
 

@@ -31,6 +31,18 @@
                     </div>
 
                     <div class="form-group row">
+                        <label for="price" class="col-md-4 col-form-label text-md-right">{{ __('料金') }}</label>
+                        <div class="col-md-6">
+                            <input id="price" class="@error('price') is-invalid @enderror" type="text" name="price" value="{{old('price')}}">
+                            @error('price')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
                         <label for="contents" class="col-md-4 col-form-label text-md-right">{{ __('イベント内容') }}</label>
                         <div class="col-md-6">
                             <textarea id="contents" class="event-text @error('contents') is-invalid @enderror" name="contents" >{{old('contents')}}</textarea>

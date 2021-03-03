@@ -55,4 +55,9 @@ class User extends Authenticatable implements MustVerifyEmailContract
     {
         $query->whereIn('id', $user_id_list);
     }
+
+    public function scopePoster($query, $post_user_id)
+    {
+        $query->find($post_user_id, ['id' , 'name']);
+    }
 }

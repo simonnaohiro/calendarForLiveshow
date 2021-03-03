@@ -6,18 +6,31 @@
 
 @section('content')
     <div class="container">
-        @if (!blank($event->ended_at))
+        @if ($ended_at)
             <h1 class="head-primary">こちらのイベントは終了いたしました。</h1>
         @endif
         <div class="card">
             <div class="card-header">
-                {{$event->event_title}}
+                <h3>Title:<b>{{$event->event_title}}</b></h3>
             </div>
             <div class="card-body">
                 <div class="event-group row">
                     <label class="label-w-1">{{__('投稿者')}}</label>
-                    <div class="col-md-6"><h3>{{$poster->name}}</h3>
+                    <div class="col-md-6"><h5>{{$poster->name}}</h5>
                         <a href="{{route('show_profile', ['user_id' => $poster->id])}}">投稿者のプロフィールへ</a>
+                    </div>
+                </div>
+                <hr>
+                <div class="event-group row">
+                    <label class="label-w-1">{{__('料金')}}</label>
+                    <div class="col-md-6">
+                        <p>¥
+                        @if (!blank($event->price))
+                            {{$event->price}}
+                        @else
+                            0
+                        @endif
+                        </p>
                     </div>
                 </div>
                 <hr>
@@ -53,7 +66,7 @@
                     <div class="col-md-6">
                         @foreach ($performers as $key => $performer)
                         <div>
-                            @if (!blank($event->ended_at))
+                            @if ($ended_at)
                                 <p class="deleted">{{$performer}}</p>
                             @else
                                 <a href="{{route('redirect_ticket_on_layaway', ['event_id' => $event->id, 'performer' => $performer])}} ">{{$performer}}</a>
@@ -68,7 +81,7 @@
                 <hr>
                 <div class="btn-wrapper">
                     <button class="btn btn-primary m-3"><a href="{{route('events_list', ['year' => $ymdt[0], 'month' => $ymdt[1], 'day' => $ymdt[2],])}}">リストに戻る</a></button>
-                @if (!blank($same_user) && blank($ended))
+                @if (!blank($same_user) && !$ended_at)
                     <button class="btn btn-secondary m-3"><a href="{{route('finish_event', [$event_id, $poster->id])}}">イベントを終了する</a></button>
                 @endif
                 </div>

@@ -10,6 +10,8 @@
             <div class="card-body">
                 {{$poster->name}}
                 <hr>
+                {!! nl2br(e($event['price'])) !!}
+                <hr>
                 {{$event['event_date']}}
                 @if (!blank($event['event_image']))
                     <hr>
@@ -24,6 +26,7 @@
             <form method="POST">
                 @csrf
                 <input type="hidden" name="event_title" value="{{$event['event_title']}}" readonly>
+                <input type="hidden" name="price" value="{{$event['price']}}" readonly>
                 <input type="hidden" name="event_date" value="{{$event['event_date']}}" readonly>
                 <input type="hidden" name="event_image" value="{{$event['event_image']}}" readonly>
                 <input type="hidden" name="contents" value="{{$event['contents']}}" readonly>

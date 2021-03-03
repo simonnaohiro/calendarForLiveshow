@@ -12,7 +12,7 @@ class TicketOnLayaway extends Model
         'event_id', 'user_id', 'performer_name',
     ];
 
-    public function scopeEvent($query, $event_id)
+    public function scopeEventId($query, $event_id)
     {
         $query->where('event_id',  $event_id);
     }
@@ -25,5 +25,10 @@ class TicketOnLayaway extends Model
     public function user()
     {
         return $this->belongsTo('App\User');
+    }
+
+    public function event()
+    {
+        return $this->belongsTo('App\Event');
     }
 }

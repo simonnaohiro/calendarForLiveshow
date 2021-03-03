@@ -183,7 +183,7 @@ class EventController extends Controller
 
     public function layaway_list($event_id, $performer)
     {
-        $layaways = TicketOnLayaway::event($event_id)->performer($performer)->get();
+        $layaways = TicketOnLayaway::eventId($event_id)->performer($performer)->get();
         $poster = Event::poster($event_id)->first();
         $poster_id = $poster->post_user_id;
 

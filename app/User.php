@@ -10,6 +10,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail as MustVerifyEmailContract;
 use Illuminate\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class User extends Authenticatable implements MustVerifyEmailContract
 {
@@ -59,5 +60,10 @@ class User extends Authenticatable implements MustVerifyEmailContract
     public function scopePoster($query, $post_user_id)
     {
         $query->find($post_user_id, ['id' , 'name']);
+    }
+
+    public function userProfile()
+    {
+        return $this->hasOne('App\UserProfile');
     }
 }

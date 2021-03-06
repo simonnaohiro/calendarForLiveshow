@@ -12,11 +12,9 @@ class UserEditController extends Controller
 {
     public function show_profile($user_id)
     {   
-        $user_name = User::find($user_id)->name;
-
         $profile = UserProfile::where('user_id', $user_id)->first();
 
-        return view('users.profile', compact('user_name', 'profile'));
+        return view('users.profile', compact('profile'));
     }
 
     public function show_edit_profile(Request $request)

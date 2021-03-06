@@ -12,4 +12,9 @@ class UserProfile extends Model
     protected $fillable = [
         'user_id', 'image_icon', 'introduction',
     ];
+
+    public function user()
+    {
+        return $this->hasOne('App\User', 'id', 'user_id');
+    }
 }

@@ -113,7 +113,7 @@ Route::get('/event/performer/layaway_list/{event_id}/{performer}', "EventControl
  * ユーザーページ系
  */
 // ユーザーページの表示
-Route::get('/user/show/mypage/{user_id}', 'UserEditController@show_profile')->name('show_profile')->middleware('no.user.check', 'auth');
+Route::get('/user/show/mypage/{user_id}', 'UserEditController@show_profile')->name('show_profile')->middleware('no.user.check','no.profile.check' , 'auth');
 //ユーザーページ編集フォームを表示
 Route::get('/user/mypage/edit', 'UserEditController@show_edit_profile')->name('edit_profile')->middleware('auth');
 //ユーザーページの登録

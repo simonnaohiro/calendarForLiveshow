@@ -4,7 +4,7 @@
     <div class="container">
         <div class="card">
             <div class="card-header">
-                {{$user_name}}さんのプロフィール
+                {{$profile->user->name}}さんのプロフィール
             </div>
             <div class="card-body">
                 {{-- <div class="event-group row">

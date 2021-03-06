@@ -70,6 +70,7 @@ class Kernel extends HttpKernel
         'no.user.check' => \App\Http\Middleware\NoUserCheck::class,
         'no.event.check' => \App\Http\Middleware\NoEventCheck::class,
         'event.exist.check' => \App\Http\Middleware\CheckEvenIsSet::class,
+        'no.profile.check' => \App\Http\Middleware\NoProfileCheck::class,
     ];
 
     /**

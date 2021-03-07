@@ -64,7 +64,7 @@ body {
 
 .day:hover {
   cursor: pointer;
-  transform: scale(1.2);
+  transform: scale(1.1);
   background-color: #b9ffd6;
 }
 

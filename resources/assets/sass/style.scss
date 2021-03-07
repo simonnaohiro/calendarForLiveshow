@@ -1,7 +1,7 @@
 /* 以下追加したスタイル */
 
 body{
-    background-color: rgb(247, 255, 244) !important; 
+    background-color: #f7fff4 !important; 
 }
 
 .overwrap-link {
@@ -41,6 +41,12 @@ body{
     color: #ada6a6 !important;
 }
 
+// カレンダースタイル
+
+.radius {
+    border-collapse: separate !important; 
+}
+
 .day-link {
     color: #696969;
     display: block;
@@ -57,11 +63,13 @@ body{
 
 .day:hover {
     cursor: pointer;
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
     background-color: rgb(185, 255, 214);
 }
 
 .today{
-    color: green;
+    color: rgb(98, 95, 255);
 }
   
 .saturday{
@@ -123,7 +131,7 @@ body{
     height: 236px;
 }
 
-
+// レスポンシブ
 @media (max-width: 280px){
     .event-text {
         width: 220px;

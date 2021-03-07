@@ -44,6 +44,10 @@ body {
   color: #ada6a6 !important;
 }
 
+.radius {
+  border-collapse: separate !important;
+}
+
 .day-link {
   color: #696969;
   display: block;
@@ -60,11 +64,12 @@ body {
 
 .day:hover {
   cursor: pointer;
+  transform: scale(1.2);
   background-color: #b9ffd6;
 }
 
 .today {
-  color: green;
+  color: #625fff;
 }
 
 .saturday {

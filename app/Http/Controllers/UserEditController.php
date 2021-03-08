@@ -11,21 +11,25 @@ use Validator;
 class UserEditController extends Controller
 {
     public function show_profile($user_id)
-    {   
-        $profile = UserProfile::where('user_id', $user_id)->first();
+    {
+        $profile = UserProfile::getUser($user_id)->first();
 
         return view('users.profile', compact('profile'));
     }
 
     public function show_edit_profile(Request $request)
     {   
-        return view('form.userProfileEdit');
+        $user_id = Auth::user()->id;
+        $profile = UserProfile::getUser($user_id)->first();
+
+        return view('form.userProfileEdit', compact('profile'));
     }
 
     public function register_profile(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'image_icon' => 'nullable|image',
+            'user_name' => 'required|string|max:255',
             'introduction' => 'required|string|max:255',
         ]);
             
@@ -57,6 +61,10 @@ class UserEditController extends Controller
         $user_id = Auth::user()->id;
         $user_profile = UserProfile::where('user_id', $user_id)->first();
 
+        if($request->user_name){
+            
+        }
+
         // DBにプロフィールカラムが存在しない場合（新たに作成）
         if($user_profile == null){
             $new_user_profile = new UserProfile;
@@ -64,7 +72,7 @@ class UserEditController extends Controller
             $new_user_profile->fill([
                 'user_id' => $user_id,
                 'image_icon' => $request->image_icon,
-                'introduction' => $request->introduction])->save();
+                'introduction' => $request->introduction,])->save();
 
             return redirect(route('show_profile', compact('user_id')));
         }
@@ -72,8 +80,7 @@ class UserEditController extends Controller
         // 存在していた場合（更新）
         $user_profile->fill([
             'image_icon' => $request->image_icon,
-            'introduction' => $request->introduction,
-        ])->save();
+            'introduction' => $request->introduction,])->save();
 
         return redirect(route('show_profile', compact('user_id')));
     }

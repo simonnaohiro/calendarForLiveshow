@@ -41,6 +41,7 @@ class UserEditController extends Controller
         }
 
         $event = [
+            'user_name' => $request->user_name,
             'introduction' => $request->introduction,
             'image_icon' => $request->image_icon,
         ];
@@ -60,14 +61,14 @@ class UserEditController extends Controller
     {   
         $user_id = Auth::user()->id;
         $user_profile = UserProfile::where('user_id', $user_id)->first();
-
-        if($request->user_name){
-            
-        }
-
+        $user = User::find($user_id);
+        
         // DBにプロフィールカラムが存在しない場合（新たに作成）
         if($user_profile == null){
             $new_user_profile = new UserProfile;
+
+            $user->name = $request->user_name;
+            $user->save();
 
             $new_user_profile->fill([
                 'user_id' => $user_id,
@@ -78,9 +79,13 @@ class UserEditController extends Controller
         }
 
         // 存在していた場合（更新）
+        $user->name = $request->user_name;
+
         $user_profile->fill([
             'image_icon' => $request->image_icon,
             'introduction' => $request->introduction,])->save();
+
+        $user->save();
 
         return redirect(route('show_profile', compact('user_id')));
     }

@@ -18,10 +18,10 @@
                         </div>
                     </div> --}}
                     <div class="form-group row">
-                        <label for="introduction" class="col-md-4 col-form-label text-md-right">{{ __('名前') }}</label>
+                        <label for="user_name" class="col-md-4 col-form-label text-md-right">{{ __('名前') }}</label>
                         <div class="col-md-6">
-                            <input id="name" class="@error('name') is-invalid @enderror" name="name" value="{{ !blank(old('name')) ? old('name') : $profile->user->name }}">
-                            @error('introduction')
+                            <input id="user_name" class="@error('name') is-invalid @enderror" name="user_name" value="{{ !blank(old('user_name')) ? old('user_name') : $profile->user->name }}">
+                            @error('user_name')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

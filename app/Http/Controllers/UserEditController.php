@@ -81,11 +81,11 @@ class UserEditController extends Controller
         // 存在していた場合（更新）
         $user->name = $request->user_name;
 
+        $user->save();
+        
         $user_profile->fill([
             'image_icon' => $request->image_icon,
             'introduction' => $request->introduction,])->save();
-
-        $user->save();
 
         return redirect(route('show_profile', compact('user_id')));
     }

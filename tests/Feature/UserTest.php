@@ -5,18 +5,28 @@ namespace Tests\Feature;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use App\User;
 
 class UserTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
-    public function testExample()
-    {
-        $response = $this->get('/');
+    use RefreshDatabase;
 
-        $response->assertStatus(200);
+    private $attributes;
+
+    public function setUp()
+    {
+        parent::setUp();
+
+        $this->attributes = [
+            'name'     => 'テスト太郎',
+            'mail'     => 'hoge@example.com',
+            'password' => bcrypt('test'),
+        ];
+    }
+
+    public function test_登録できる()
+    {
+        User::create($this->attributes);
+        $this->assertDatabaseHas('users', $this->attributes);
     }
 }

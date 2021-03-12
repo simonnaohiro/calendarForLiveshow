@@ -24,7 +24,7 @@ class UserTest extends TestCase
         ];
     }
 
-    public function test_登録できる()
+    public function testRegister()
     {
         User::create($this->attributes);
         $this->assertDatabaseHas('users', $this->attributes);

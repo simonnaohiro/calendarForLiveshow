@@ -5,17 +5,15 @@ namespace Tests\Feature;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class ExampleTest extends TestCase
+class topTest extends TestCase
 {
     /**
      * A basic test example.
      *
      * @return void
      */
-    public function testBasicTest()
+    public function topTest()
     {
-        $response = $this->get(route('calendar', ['year' => 2020, 'month' => 2]));
-
-        $response->assertStatus(200)->assertViewIs('calendar');
+        
     }
 }

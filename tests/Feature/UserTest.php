@@ -13,7 +13,7 @@ class UserTest extends TestCase
 
     private $attributes;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 

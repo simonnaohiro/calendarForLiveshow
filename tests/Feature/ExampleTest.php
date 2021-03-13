@@ -14,8 +14,8 @@ class ExampleTest extends TestCase
      */
     public function testBasicTest()
     {
-        $response = $this->get('/');
+        $response = $this->get(route('calendar', ['year' => 2020, 'month' => 2]));
 
-        $response->assertStatus(200);
+        $response->assertStatus(200)->assertViewIs('calendar');
     }
 }

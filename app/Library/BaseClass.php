@@ -4,6 +4,9 @@ namespace App\Library;
 use App;
 use Carbon\Carbon;
 
+/**
+ * ymd is an abbreviation for year, month, and day.
+ */
 class BaseClass
 {
     // 先月、一月後を返す関数(第二引数まで渡したら翌月先月,第三引数まで渡したら翌日前日を返す)

@@ -3,11 +3,11 @@
 @section('content')
     <div class="prev-next-wrapper">
 
-        <a class="prev" href="{{route('events_list', ['year' => $yesterday->year, 'month' => $yesterday->month, 'day' => $yesterday->day ])}}">
+        <a class="prev" href="{{route('event_list', ['year' => $yesterday->year, 'month' => $yesterday->month, 'day' => $yesterday->day ])}}">
             {{ $yesterday->year}}&#047;{{$yesterday->month}}&#047;{{$yesterday->day}}&lt;
         </a>
         <h3 class="month-header">{{$today->month}}月{{$today->day}}日</h3>
-        <a class="next" href="{{route('events_list',['year' => $tomorrow->year, 'month' => $tomorrow->month, 'day' => $tomorrow->day ])}}">
+        <a class="next" href="{{route('event_list',['year' => $tomorrow->year, 'month' => $tomorrow->month, 'day' => $tomorrow->day ])}}">
             &gt;{{$tomorrow->year}}&#047;{{$tomorrow->month}}&#047;{{$tomorrow->day}}
         </a>
     </div>

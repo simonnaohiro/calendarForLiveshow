@@ -6,7 +6,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class EventTest extends TestCase
+class TwoFactorLogin extends TestCase
 {
     /**
      * A basic feature test example.
@@ -15,8 +15,11 @@ class EventTest extends TestCase
      */
     public function testExample()
     {
-        $response = $this->get(route('event_list', ['year' => '2020', 'month' => '2', 'day' => '1']));
+        $response = $this->get(route('login_form'));
 
-        $response->assertViewIs('events.event_list');
+        $response->assertStatus(200)
+        ->assertViewIs('two_factor_auth.login_form')
+        ->assertSee('ログイン')
+        ->assertSee('パスワード');
     }
 }

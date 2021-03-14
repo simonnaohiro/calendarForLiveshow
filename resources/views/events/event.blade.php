@@ -80,7 +80,7 @@
                 </div>
                 <hr>
                 <div class="btn-wrapper">
-                    <button class="btn btn-primary m-3"><a href="{{route('events_list', ['year' => $ymdt[0], 'month' => $ymdt[1], 'day' => $ymdt[2],])}}">リストに戻る</a></button>
+                    <button class="btn btn-primary m-3"><a href="{{route('event_list', ['year' => $ymdt[0], 'month' => $ymdt[1], 'day' => $ymdt[2],])}}">リストに戻る</a></button>
                 @if (!blank($same_user) && !$ended_at)
                     <button class="btn btn-secondary m-3"><a href="{{route('finish_event', [$event_id, $poster->id])}}">イベントを終了する</a></button>
                 @endif

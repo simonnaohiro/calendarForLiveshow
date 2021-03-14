@@ -24,7 +24,6 @@ class EventController extends Controller
             $logined_user_id = Auth::user()->id;
         }
 
-
         // パラメータの値から登録したイベントを取得
         $event = Event::find($event_id);
         // イベントに保存された投稿者idからユーザー情報を取得
@@ -120,7 +119,7 @@ class EventController extends Controller
         // 本日開催のイベント一覧を取得
         $todayEvents = Event::where('event_date', 'LIKE', "{$currentDateStr}%")->get();
 
-        return view('events.events_list', [
+        return view('events.event_list', [
             'ymd' => $ymd, 
             'todayEvents' => $todayEvents,
             'today' => $days['current'],

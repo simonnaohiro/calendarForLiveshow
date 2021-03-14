@@ -77,7 +77,7 @@ Route::post('/result', 'EventRegisterController@return_page');
 Route::get('/event/event_information/{event_id?}', 'EventController@show_event')->name('event')->middleware('no.event.check', 'event.exist.check');
 
 // イベント一覧
-Route::get('/events/list/{year}/{month}/{day}', 'EventController@day_event_list')->name('events_list');
+Route::get('/events/list/{year}/{month}/{day}', 'EventController@day_event_list')->name('event_list');
 
 // イベント終了
 Route::get('/event/finish/{event_id}/{poster_id}', 'EventController@finish_event')->name('finish_event')->middleware('check.same.user');

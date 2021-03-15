@@ -107,7 +107,7 @@ Route::get('/event/performers/{event_id}', 'EventController@performer_list')->na
 // 予約（取り置き）リストへ
 Route::get('/event/performer/layaway_list/{event_id}/{performer}', "EventController@layaway_list")->name('layaway_list')->middleware('auth');
 //PDF出力
-// Route::get('/pdf/{event_id}/{performer}/{poster_id}', 'PDFController@index')->name('pdf')->middleware('check.same.user');
+Route::get('/pdf/{event_id}/{performer}/{poster_id}', 'PDFController@index')->name('pdf')->middleware('check.same.user');
 
 /**
  * ユーザーページ系

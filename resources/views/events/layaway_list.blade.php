@@ -8,7 +8,7 @@
             </div>
             <div class="card-body">
                 <table>
-                    {{-- <button class="btn btn-primary"><a href="{{route('pdf', ['event_id' => $event_id, 'performer' => $performer, 'poster_id' => $poster_id])}}">PDF化する</a></button> --}}
+                    <button class="btn btn-primary"><a href="{{route('pdf', ['event_id' => $event_id, 'performer' => $performer, 'poster_id' => $poster_id])}}">PDF化する</a></button>
                 @foreach ($layaway_users as $layaway_user)
                     <div>
                         {{$layaway_user->name}}

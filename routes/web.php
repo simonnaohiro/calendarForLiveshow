@@ -138,3 +138,9 @@ Route::post('/user/mypage/edit/preview', 'UserEditController@save_profile')->nam
  */
 
 Route::get('/test/js', 'TestController@index')->name('index');
+
+/**
+ * LINE API
+ */
+
+Route::get('/line', 'LineBotController@index')->name('line');

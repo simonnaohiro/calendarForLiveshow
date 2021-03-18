@@ -141,6 +141,7 @@ Route::get('/test/js', 'TestController@index')->name('index');
 
 /**
  * LINE API
+ * 未実装
  */
 
 Route::get('/line', 'LineBotController@index')->name('line');

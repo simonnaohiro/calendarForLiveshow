@@ -11,6 +11,7 @@ class LineBotController extends Controller
 {
     public function index(Request $request)
     {
+        //認証を行う
         $lineAccessToken = config('services.line.access_token');
         $lineChannelSecret = config('services.line.channel_secret');
 
@@ -19,10 +20,12 @@ class LineBotController extends Controller
 
         $signature = $request->header('x-line-signature');
 
-        if(!$lineBot->validateSignatuer($request->getContent(), $signature)) {
+        if (!$lineBot->validateSignature($request->getContent(), $signature)) {
+            //送信元に400エラーを伝える
             abort(400, 'Invalid signature');
         }
 
+        //LINEで入力されたメッセージ情報を受け取る
         $events = $lineBot->parseEventRequest($request->getContent(), $signature);
     }
 }

@@ -15,8 +15,14 @@ class EventTest extends TestCase
      */
     public function testExample()
     {
-        // $response = $this->get(route('event_list', ['year' => '2020', 'month' => '2', 'day' => '1']));
+        $year = 2020;
+        $month = 2;
+        $day = 1;
 
+        echo route('calendar', ['year' => $year, 'month' => $month]);
+        $response = $this->get(route('event_list', ['year' => $year, 'month' => $month, 'day' => $day]));
+
+        $response->assertStatus(500);
         // $response->assertViewIs('events.event_list');
     }
 }

@@ -17,6 +17,7 @@ class TopPageTest extends TestCase
     {
         $year = 2021;
         $month = 1;
+
         while($month < 12){
             $response = $this->get(route('calendar', ['year' => $year, 'month' => $month]));
 

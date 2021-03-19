@@ -70,7 +70,7 @@
                         {{-- <label for="event-image" class="col-md-4 col-form-label text-md-right">{{ __('イベントイメージ（ポスターなど）') }}</label> --}}
                         <div class="col-md-6">
                             {{-- CDN実装前なので書き込めないようにする --}}
-                            <input id="event_image" class="@error('event_image') is-invalid @enderror event-image" type="hidden" name="event_image" >
+                            <input id="event_image" class="@error('event_image') is-invalid @enderror event-image" type="hidden" name="event_image" disabled>
                             @error('event_image')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

@@ -86,6 +86,12 @@ Route::get('/event/finish/{event_id}/{poster_id}', 'EventController@finish_event
 Route::get('/soft_delete/{event_id}/{poster_id}', 'EventController@soft_delete')->name('soft_delete')->middleware('check.same.user');
 
 /**
+ * イベント編集
+ */
+
+Route::get('event/edit/{event_id}', 'EventEditController@show_event_edit_form')->name('event_edit');
+
+/**
  * イベントユーザーのチケット取り置き（予約）
  */
 

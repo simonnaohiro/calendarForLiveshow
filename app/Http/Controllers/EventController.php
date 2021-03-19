@@ -109,8 +109,6 @@ class EventController extends Controller
 
     public function day_event_list($year, $month, $day)
     {
-
-        echo route('event_list', ['year' => 2020, 'month' => 2, 'day' => 1]);
         // パラメーターの値を正しい形式に変換
         $ymd = BaseClass::rtn_correct_ymd($year, $month, $day);
 
@@ -169,7 +167,6 @@ class EventController extends Controller
     {
         $event = Event::find($event_id, ['performers']);
         $performers = BaseClass::extractKeywords($event->performers);
-
 
         return view('events.performer_list', compact('performers', 'event_id'));
     }

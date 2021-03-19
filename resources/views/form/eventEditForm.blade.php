@@ -2,14 +2,14 @@
 @section('content')
 <div class="container">
     <div class="card">
-        <div class="card-header">{{ __('イベント変更') }}</div>
+        <div class="card-header">{{ __('イベント情報編集') }}</div>
         <div class="card-body">
             <form method="POST" action="{{route('event_register')}}">
                 @csrf
                 <div class="form-group row">
                     <label for="event_date" class="col-md-4 col-form-label text-md-right">{{ __('イベントの日時') }}</label>
                     <div class="col-md-6">
-                        <input id="event_date" type="datetime-local" name="event_date" class="@error('event_date') is-invalid @enderror" value="{{old('event_date') != null ? old('event_date') : $event->event_date}}">
+                        <input id="event_date" type="datetime-local" name="event_date" class="@error('event_date') is-invalid @enderror" value="{{old('event_date') != null ? old('event_date') : $event_date}}">
                         @error('event_date')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -70,7 +70,7 @@
                 <div class="form-group row mb-0">
                     <div class="col-md-6 offset-md-4">
                         <button type="submit" class="btn btn-primary">
-                            {{ __('イベント登録') }}
+                            {{ __('変更を登録') }}
                         </button>
                     </div>
                 </div>

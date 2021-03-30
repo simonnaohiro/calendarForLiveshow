@@ -46,7 +46,6 @@ class EventRegisterController extends Controller
             'event_image' => 'nullable|image',
             'post_user_id' => 'required|integer',
         ]);
-            
 
         if ($validator->fails()) {
             return redirect('/event/register')
@@ -59,7 +58,7 @@ class EventRegisterController extends Controller
             'event_date' => $request->event_date,
             'event_title' => $request->event_title,
             'contents' => $request->contents,
-            'price' => (int)$request->price,
+            'price' => $request->price,
             'event_image' => $request->event_image,
             'performers' => $request->performers,
         ];

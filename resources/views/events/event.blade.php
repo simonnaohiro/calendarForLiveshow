@@ -10,8 +10,11 @@
             <h1 class="head-primary">こちらのイベントは終了いたしました。</h1>
         @endif
         <div class="card">
-            <div class="card-header">
+            <div class="card-header event_header">
                 <h3>Title:<b>{{$event->event_title}}</b></h3>
+            @if (!blank($same_user))
+                <a href=" {{route('event_edit', ['event_id' => $event_id]) }} ">編集</a>
+            @endif
             </div>
             <div class="card-body">
                 <div class="event-group row">

@@ -91,6 +91,10 @@ Route::get('/soft_delete/{event_id}/{poster_id}', 'EventController@soft_delete')
 
 Route::get('event/edit/{event_id}', 'EventEditController@show_event_edit_form')->name('event_edit');
 
+Route::post('event/edit/{event_id}', 'EventEditController@register_edit_event')->name('register_edit_event');
+
+Route::get('event/preview/edit/confirm', 'EventEditController@post_edit')->name('post_edit_event');
+
 /**
  * イベントユーザーのチケット取り置き（予約）
  */

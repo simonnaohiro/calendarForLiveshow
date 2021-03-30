@@ -1,7 +1,12 @@
 /* 以下追加したスタイル */
 
 body{
-    background-color: #f7fff4 !important; 
+    bckground-color: #f7fff4 !important; 
+}
+
+.event_header{
+    display: flex;
+    justify-content: space-between;
 }
 
 .overwrap-link {

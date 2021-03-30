@@ -81,4 +81,5 @@ class BaseClass
     {
         return preg_split('/[\/\p{Z}\p{Cc}-]++/u', $input, $limit, PREG_SPLIT_NO_EMPTY);
     }
+    
 }

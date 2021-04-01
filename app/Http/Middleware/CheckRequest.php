@@ -18,10 +18,12 @@ class CheckRequest
     {
         // リクエストがなかった場合
         if(blank($request->old())){
+
+            $redirect_page = route('home');
             // リクエストがなかったら結果画面に遷移
             return redirect(route('result'))->withInput([
                 'result' => 'エラーです。やり直してください。',
-                'last_insert_id' => null,
+                'redirect_page' => $redirect_page,
                 'button' => 'トップページへ戻る'
             ]);
         }

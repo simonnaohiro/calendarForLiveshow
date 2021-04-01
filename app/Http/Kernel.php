@@ -68,7 +68,7 @@ class Kernel extends HttpKernel
         // 未実装
         // 'check.old.profile' => \App\Http\Middleware\CheckOldProfile::class,
         'no.user.check' => \App\Http\Middleware\NoUserCheck::class,
-        'no.event.check' => \App\Http\Middleware\NoEventCheck::class,
+        'event.param.check' => \App\Http\Middleware\NoEventCheck::class,
         'event.exist.check' => \App\Http\Middleware\CheckEvenIsSet::class,
         'no.profile.check' => \App\Http\Middleware\NoProfileCheck::class,
     ];

@@ -92,37 +92,15 @@ class EventRegisterController extends Controller
         
         $event->fill($event_info)->save();
 
+        // 作成したイベントの主キーを代入
         $last_insert_id = $event->id;
+
+        $redirect_page = route('event', ['event_id' => $last_insert_id]);
 
         return redirect(route('result'))->withInput([
             'result' => '投稿が完了しました。',
-            'last_insert_id' => $last_insert_id,
+            'redirect_page' => $redirect_page,
             'button' => '投稿したページへ'
         ]);
-    }
-
-    public function result(Request $request)
-    {   
-        $values = $request->old();
-
-        $message = $values['result'];
-        $last_insert_id = $values['last_insert_id'];
-        $button = $values['button'];
-
-        return view('pages.result', [
-            'message' => $message,
-            'last_insert_id' => $last_insert_id,
-            'button' =>  $button,
-        ]);
-
-    }
-
-    public function return_page(Request $request)
-    {   
-        $last_insert_id = $request->last_insert_id;
-        
-        return redirect(route('event', [
-            'event_id' => $last_insert_id,
-            ]));
     }
 }

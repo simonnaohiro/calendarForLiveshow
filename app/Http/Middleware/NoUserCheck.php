@@ -21,9 +21,10 @@ class NoUserCheck
         $user = User::find($user_id);
 
         if(blank($user)){
+            $redirect_page = route('home');
             return redirect(route('result'))->withInput([
                 'result' => '存在しないユーザーです',
-                'last_insert_id' => null,
+                'redirect_page' => $redirect_page,
                 'button' => 'トップページへ戻る'
             ]);
         }

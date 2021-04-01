@@ -21,9 +21,10 @@ class NoProfileCheck
         $profile = UserProfile::where('user_id', $user_id)->first();
 
         if(blank($profile)){
+            $redirect_page = route('home');
             return redirect(route('result'))->withInput([
                 'result' => 'プロフィールが存在しません。',
-                'last_insert_id' => null,
+                'redirect_page' => $redirect_page,
                 'button' => 'トップページへ戻る'
             ]);
         }

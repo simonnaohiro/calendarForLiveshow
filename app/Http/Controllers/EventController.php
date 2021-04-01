@@ -95,15 +95,19 @@ class EventController extends Controller
         // DBに保存
         $layaway->fill($layaway_info)->save();
         
+        // メールを送信
         $user = User::find($layaway_info['user_id']);
 
         \Mail::to($user)->send(new LayawayConfirmation($layaway_info['performer_name']));
 
+        // リダイレクト先
+        $redirect_page = route('event', ['event_id' => $layaway_info['event_id']]);
+        
         // 結果画面に遷移
         return redirect(route('result'))->withInput([
             'result' => 'チケットを取り置きました',
-            'last_insert_id' => null,
-            'button' => 'トップページへ戻る'
+            'redirect_page' => $redirect_page,
+            'button' => 'イベントページに戻る'
         ]);
     }
 
@@ -137,30 +141,27 @@ class EventController extends Controller
 
         $event->save();
 
+        // result画面に遷移
+        $redirect_page = route('event' ,['event_id' => $event_id]);
+
         return redirect(route('result'))->withInput([
             'result' => 'イベントを終了いたしました',
-            'last_insert_id' => null,
+            'last_insert_id' => $redirect_page,
             'button' => 'トップページへ戻る'
         ]);
     }
 
     public function soft_delete($event_id, $poster_id)
     {   
-        $flg = Event::find($event_id)->delete();
+        Event::find($event_id)->delete();
             
-        if($flg == null){
-            return redirect(route('result'))->withInput([
-                'result' => 'イベントは存在しません。',
-                'last_insert_id' => null,
-                'button' => 'トップページへ戻る'
-            ]);
-        }else{
-            return redirect(route('result'))->withInput([
-                'result' => '削除が完了しました。',
-                'last_insert_id' => null,
-                'button' => 'トップページへ戻る'
-            ]);
-        }
+        $redirect_page = route('home');
+
+        return redirect(route('result'))->withInput([
+            'result' => '削除が完了しました。',
+            'redirect_page' => $redirect_page,
+            'button' => 'トップページへ戻る'
+        ]);
     }
 
     public function performer_list($event_id)
@@ -191,6 +192,8 @@ class EventController extends Controller
         }
         $layaway_users = User::name($user_id_list)->get();
 
-        return view('events.layaway_list', compact('layaway_users', 'event_id', 'performer', 'poster_id'));
+        return view('events.layaway_list', compact(
+            'layaway_users', 'event_id', 'performer', 'poster_id'
+        ));
     }
 }

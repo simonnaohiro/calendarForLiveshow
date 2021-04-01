@@ -50,12 +50,14 @@ class EventEditController extends Controller
         $edit_info = $request->old();
         $event = Event::find($edit_info['event_id']);
 
-        // dd($edit_info);
         $event->fill($edit_info)->save();
 
+        // リダイレクト先を決定
+        $redirect_page = route('event' ,['event_id' => $edit_info['event_id']]);
+        
         return redirect(route('result'))->withInput([
             'result' => 'イベント内容を変更しました。',
-            'last_insert_id' => $request->event_id,
+            'redirect_page' => $redirect_page,
             'button' => 'イベントページへ'
         ]);
     }

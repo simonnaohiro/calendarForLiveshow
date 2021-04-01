@@ -64,17 +64,21 @@ Route::get('/event/preview/confirm', 'EventRegisterController@preview')->name('p
 // イベント投稿
 Route::post('/event/preview/confirm', 'EventRegisterController@post_event');
 
+/**
+ * リザルト表示
+ */
+
 // リザルト画面
-Route::get('/result', 'EventRegisterController@result')->name('result')->middleware('check.request');
+Route::get('/result', 'ResultController@result')->name('result')->middleware('check.request');
 // イベント画面へ遷移
-Route::post('/result', 'EventRegisterController@return_page');
+Route::post('/result', 'ResultController@return_page');
 
 /**
  * イベント表示
  */
 
 // イベント表示 
-Route::get('/event/event_information/{event_id?}', 'EventController@show_event')->name('event')->middleware('no.event.check', 'event.exist.check');
+Route::get('/event/event_information/{event_id?}', 'EventController@show_event')->name('event')->middleware('event.param.check', 'event.exist.check');
 
 // イベント一覧
 Route::get('/events/list/{year}/{month}/{day}', 'EventController@day_event_list')->name('event_list');
@@ -83,7 +87,7 @@ Route::get('/events/list/{year}/{month}/{day}', 'EventController@day_event_list'
 Route::get('/event/finish/{event_id}/{poster_id}', 'EventController@finish_event')->name('finish_event')->middleware('check.same.user');
 
 // 論理削除
-Route::get('/soft_delete/{event_id}/{poster_id}', 'EventController@soft_delete')->name('soft_delete')->middleware('check.same.user');
+Route::get('/soft_delete/{event_id}/{poster_id}', 'EventController@soft_delete')->name('soft_delete')->middleware('check.same.user', 'event.exist.check');
 
 /**
  * イベント編集

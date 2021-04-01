@@ -19,9 +19,12 @@ class CheckSameUser
         $poster_id = $request->route()->parameter('poster_id');
 
         if($poster_id != Auth::user()->id){
+            
+            $redirect_page = route('home');
+            // トップページへ遷移
             return redirect(route('result'))->withInput([
                 'result' => '不正な操作です。',
-                'last_insert_id' => null,
+                'redirect_page' => $redirect_page,
                 'button' => 'トップページへ戻る'
             ]);
         }

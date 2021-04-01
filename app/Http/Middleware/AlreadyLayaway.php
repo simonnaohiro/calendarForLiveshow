@@ -27,11 +27,14 @@ class AlreadyLayaway
         // データが存在すれば取り置き済み画面に遷移
         if(filled($already_layaway)){
 
+            // リダイレクト先のページ
+            $redirect_page = route('event' ,['event_id' => $values['event_id']]);
+
             // 結果画面へ
             return redirect(route('result'))->withInput([
-                'result' => $values['performer_name'].' は既にあなたが取り置き済みの出演者です',
-                'last_insert_id' => null,
-                'button' => 'トップページへ戻る'
+                'result' => '既にこのイベントのチケットを取り置いています。',
+                'redirect_page' => $redirect_page,
+                'button' => 'イベントページへ戻る'
             ]);
         }
 

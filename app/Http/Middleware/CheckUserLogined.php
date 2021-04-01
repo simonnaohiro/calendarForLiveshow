@@ -17,9 +17,10 @@ class CheckUserLogined
     public function handle($request, Closure $next)
     {
         if(Auth::check()){
+            $redirect_page = route('home');
             return redirect(route('result'))->withInput([
                 'result' => '不正な操作です。',
-                'last_insert_id' => null,
+                'redirect_page' => $redirect_page,
                 'button' => 'トップページへ戻る'
             ]);
         }

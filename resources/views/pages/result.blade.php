@@ -10,8 +10,8 @@
                         {{ $message }}
                     </div>
                 </div>
-                @if (!blank($last_insert_id))
-                    <input type="hidden" name="last_insert_id" value="{{$last_insert_id}}" readonly>
+                @if (!blank($redirect_page))
+                    <input type="hidden" name="redirect_page" value="{{$redirect_page}}" readonly>
                 @endif
                 <button class="btn btn-primary m-3" type="submit">{{$button}}</button>
             </form>

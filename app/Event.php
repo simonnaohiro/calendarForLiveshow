@@ -29,4 +29,9 @@ class Event extends Model
     {
         $query->find($event_id)->get(['price']);
     }
+
+    public function scopeEventList($query, $user_id ,$limit)
+    {
+        $query->where('post_user_id', $user_id)->limit($limit)->orderBy('updated_at' ,'DESC');
+    }
 }

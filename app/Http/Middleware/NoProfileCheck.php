@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use App\UserProfile;
+use Illuminate\Support\Facades\Auth;
 
 class NoProfileCheck
 {
@@ -21,12 +22,24 @@ class NoProfileCheck
         $profile = UserProfile::where('user_id', $user_id)->first();
 
         if(blank($profile)){
-            $redirect_page = route('home');
-            return redirect(route('result'))->withInput([
-                'result' => 'プロフィールが存在しません。',
-                'redirect_page' => $redirect_page,
-                'button' => 'トップページへ戻る'
-            ]);
+            if(Auth::user()->id === $user_id){
+                
+                $redirect_page = route('edit_profile');
+
+                return redirect(route('result'))->withInput([
+                    'result' => 'プロフィールが存在しません。',
+                    'redirect_page' => $redirect_page,
+                    'button' => 'プロフィール編集ページへ'
+                ]);
+            }else{
+                $redirect_page = route('home');
+
+                return redirect(route('result'))->withInput([
+                    'result' => 'プロフィールが存在しません。',
+                    'redirect_page' => $redirect_page,
+                    'button' => 'トップページに戻る'
+                ]);
+            }
         }
 
         return $next($request);

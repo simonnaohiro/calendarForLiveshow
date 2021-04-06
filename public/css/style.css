@@ -3,7 +3,7 @@
 /* 以下追加したスタイル */
 
 body {
-  bckground-color: #f7fff4 !important;
+  background-color: #f7fff4 !important;
 }
 
 .event_header {
@@ -137,6 +137,25 @@ body {
   height: 236px;
 }
 
+.profile {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sidebar {
+  width: 200px;
+  height: auto;
+  background-color: white;
+}
+
+.profile-body {
+  width: 900px;
+}
+
+.posted-event-list {
+  display: none;
+}
+
 @media (max-width: 280px) {
   .event-text {
     width: 220px;
@@ -188,6 +207,14 @@ body {
   .label-w-1 {
     width: 30%;
     padding: 1%;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .posted-event-list {
+    display: block;
   }
 }
 

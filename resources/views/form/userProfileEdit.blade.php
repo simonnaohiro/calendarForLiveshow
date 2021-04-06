@@ -2,7 +2,7 @@
 @section('content')
     <div class="container">
         <div class="card">
-            <div class="card-header">{{ __('ユーザーページを編集する') }}</div>
+            <div class="card-header">{{ __('ユーザーページを'.$edit_or_create.'する') }}</div>
             <div class="card-body">
                 <form method="POST" action="{{route('register_profile')}}">
                     @csrf
@@ -20,7 +20,7 @@
                     <div class="form-group row">
                         <label for="user_name" class="col-md-4 col-form-label text-md-right">{{ __('名前') }}</label>
                         <div class="col-md-6">
-                            <input id="user_name" class="@error('name') is-invalid @enderror" name="user_name" value="{{ !blank(old('user_name')) ? old('user_name') : $profile->user->name }}">
+                            <input id="user_name" class="@error('name') is-invalid @enderror" name="user_name" value="{{ !blank($profile) ? $profile->user->name : $user_name}}">
                             @error('user_name')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -31,7 +31,7 @@
                     <div class="form-group row">
                         <label for="introduction" class="col-md-4 col-form-label text-md-right">{{ __('自己紹介') }}</label>
                         <div class="col-md-6">
-                            <textarea id="introduction" class="event-text @error('introduction') is-invalid @enderror" name="introduction" >{{!blank(old('introduction')) ? old('introduction') : $profile->introduction}}</textarea>
+                            <textarea id="introduction" class="event-text @error('introduction') is-invalid @enderror" name="introduction" >{{!blank($profile) ? $profile->introduction : old('introduction')}}</textarea>
                             @error('introduction')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

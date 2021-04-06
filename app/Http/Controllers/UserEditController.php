@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Event;
 use App\User;
 use App\UserProfile;
 use Validator;
@@ -13,16 +14,27 @@ class UserEditController extends Controller
     public function show_profile($user_id)
     {
         $profile = UserProfile::getUser($user_id)->first();
+        $posted_events = Event::eventList($user_id, 10)->get();
 
-        return view('users.profile', compact('profile'));
+        return view('users.profile', compact('profile' ,'posted_events'));
     }
 
     public function show_edit_profile(Request $request)
     {   
-        $user_id = Auth::user()->id;
-        $profile = UserProfile::getUser($user_id)->first();
+        // user_idを取得
+        $user = Auth::user();
+        // user_idでユーザーのプロフィールを検索
+        $profile = UserProfile::getUser($user->id)->first();
+        // ユーザープロフィールがない場合
+        if(!blank($profile)){
+            $edit_or_create = '編集';
+            $user_name = null;
+        }else{
+            $edit_or_create = '作成';
+            $user_name = $user->name;
+        }
 
-        return view('form.userProfileEdit', compact('profile'));
+        return view('form.userProfileEdit', compact('profile', 'user_name', 'edit_or_create'));
     }
 
     public function register_profile(Request $request)
@@ -60,7 +72,7 @@ class UserEditController extends Controller
     public function save_profile(Request $request)
     {   
         $user_id = Auth::user()->id;
-        $user_profile = UserProfile::where('user_id', $user_id)->first();
+        $user_profile = UserProfile::getUser($user_id)->first();
         $user = User::find($user_id);
         
         // DBにプロフィールカラムが存在しない場合（新たに作成）

@@ -22,7 +22,7 @@ class NoProfileCheck
         $profile = UserProfile::where('user_id', $user_id)->first();
 
         if(blank($profile)){
-            if(Auth::user()->id === $user_id){
+            if(Auth::user()->id == $user_id){
                 
                 $redirect_page = route('edit_profile');
 
